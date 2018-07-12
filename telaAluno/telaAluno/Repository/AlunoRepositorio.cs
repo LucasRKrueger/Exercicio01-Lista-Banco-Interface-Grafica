@@ -12,9 +12,9 @@ namespace telaAluno.Repository
 {
     public class AlunoRepositorio
     {
-        private string connectionString = @"Data Source=(LocalDB)\v11.0;AttachDbFilename=C:\Users\100314\
-                                          Documents\alunoex.mdf;Integrated Security=True;
-                                          Connect Timeout=30";
+        private string connectionString = @"Data Source=(LocalDB)\MSSQLLocalDB;AttachDbFilename=C:
+                                          \Users\Lucas\Documents\
+                                          alunoex.mdf;Integrated Security=True;Connect Timeout=30";
         private SqlConnection connection = null;
 
         public AlunoRepositorio()
