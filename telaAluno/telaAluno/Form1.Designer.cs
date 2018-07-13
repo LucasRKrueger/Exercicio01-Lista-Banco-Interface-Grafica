@@ -67,6 +67,8 @@
             this.textBox1.Name = "textBox1";
             this.textBox1.Size = new System.Drawing.Size(261, 20);
             this.textBox1.TabIndex = 1;
+            this.textBox1.Enter += new System.EventHandler(this.textBox1_Enter);
+            this.textBox1.Leave += new System.EventHandler(this.textBox1_Leave);
             // 
             // button1
             // 
@@ -176,6 +178,7 @@
             this.rbDesc.TabStop = true;
             this.rbDesc.Text = "DESC";
             this.rbDesc.UseVisualStyleBackColor = true;
+            this.rbDesc.CheckedChanged += new System.EventHandler(this.rbDesc_CheckedChanged);
             // 
             // rbAsc
             // 
@@ -187,6 +190,7 @@
             this.rbAsc.TabStop = true;
             this.rbAsc.Text = "ASC";
             this.rbAsc.UseVisualStyleBackColor = true;
+            this.rbAsc.CheckedChanged += new System.EventHandler(this.rbAsc_CheckedChanged);
             // 
             // groupBox2
             // 
@@ -210,6 +214,7 @@
             this.rbFrequencia.TabStop = true;
             this.rbFrequencia.Text = "Frequência";
             this.rbFrequencia.UseVisualStyleBackColor = true;
+            this.rbFrequencia.CheckedChanged += new System.EventHandler(this.rbFrequencia_CheckedChanged);
             // 
             // rbCodigoMatricula
             // 
@@ -221,6 +226,7 @@
             this.rbCodigoMatricula.TabStop = true;
             this.rbCodigoMatricula.Text = "Código da Matricula";
             this.rbCodigoMatricula.UseVisualStyleBackColor = true;
+            this.rbCodigoMatricula.CheckedChanged += new System.EventHandler(this.rbCodigoMatricula_CheckedChanged);
             // 
             // rbNome
             // 
@@ -232,6 +238,7 @@
             this.rbNome.TabStop = true;
             this.rbNome.Text = "Nome";
             this.rbNome.UseVisualStyleBackColor = true;
+            this.rbNome.CheckedChanged += new System.EventHandler(this.rbNome_CheckedChanged);
             // 
             // Form1
             // 
@@ -253,6 +260,7 @@
             this.Text = "Form1";
             this.Activated += new System.EventHandler(this.Form1_Activated);
             this.Load += new System.EventHandler(this.Form1_Load);
+            this.Click += new System.EventHandler(this.Form1_Click);
             ((System.ComponentModel.ISupportInitialize)(this.dataGridView1)).EndInit();
             this.groupBox1.ResumeLayout(false);
             this.groupBox1.PerformLayout();

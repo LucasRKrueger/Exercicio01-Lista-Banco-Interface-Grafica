@@ -17,6 +17,7 @@ namespace telaAluno
         public Form1()
         {
             InitializeComponent();
+            AtualizarLista();
         }
 
         private void button1_Click(object sender, EventArgs e)
@@ -72,11 +73,11 @@ namespace telaAluno
             if (resultado == DialogResult.Yes)
             {
                 bool apagado = new AlunoRepositorio().Apagar(codigo);
-                MessageBox.Show("Registro apagado com sucesso");
+                MessageBox.Show(nome + " apagado com sucesso");
             }
             else
             {
-                MessageBox.Show(nome + "apagado com sucesso");
+                MessageBox.Show("Exclusão de " + nome + " cancelada com sucesso");
             }
 
 
@@ -100,6 +101,46 @@ namespace telaAluno
         }
 
         private void Form1_Load(object sender, EventArgs e)
+        {
+            AtualizarLista();
+        }
+
+        private void textBox1_Leave(object sender, EventArgs e)
+        {
+            AtualizarLista();
+        }
+
+        private void Form1_Click(object sender, EventArgs e)
+        {
+            AtualizarLista();
+        }
+
+        private void textBox1_Enter(object sender, EventArgs e)
+        {
+            AtualizarLista();
+        }
+
+        private void rbNome_CheckedChanged(object sender, EventArgs e)
+        {
+            AtualizarLista();
+        }
+
+        private void rbCodigoMatricula_CheckedChanged(object sender, EventArgs e)
+        {
+            AtualizarLista();
+        }
+
+        private void rbFrequencia_CheckedChanged(object sender, EventArgs e)
+        {
+            AtualizarLista();
+        }
+
+        private void rbAsc_CheckedChanged(object sender, EventArgs e)
+        {
+            AtualizarLista();
+        }
+
+        private void rbDesc_CheckedChanged(object sender, EventArgs e)
         {
             AtualizarLista();
         }

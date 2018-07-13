@@ -12,9 +12,7 @@ namespace telaAluno.Repository
 {
     public class AlunoRepositorio
     {
-        private string connectionString = @"Data Source=(LocalDB)\MSSQLLocalDB;AttachDbFilename=C:
-                                          \Users\Lucas\Documents\
-                                          alunoex.mdf;Integrated Security=True;Connect Timeout=30";
+        private string connectionString = @"Data Source=(LocalDB)\v11.0;AttachDbFilename=C:\Users\100314\Documents\alunoex.mdf;Integrated Security=True;Connect Timeout=30";
         private SqlConnection connection = null;
 
         public AlunoRepositorio()
@@ -68,7 +66,7 @@ namespace telaAluno.Repository
             SqlCommand command = new SqlCommand();
             command.Connection = connection;
             command.CommandText = @"SELECT id, nome, codigo_matricula, nota_1, nota_2, nota_3, frequencia FROM alunosexx WHERE nome LIKE @PESQUISA OR frequencia LIKE
-            @PESQUISA ORDER BY" + colunaOrdenacao + " " + tipoOrdenacao;
+            @PESQUISA ORDER BY " + colunaOrdenacao + " " + tipoOrdenacao;
             command.Parameters.AddWithValue("@PESQUISA", textoParaPesquisar);
             
             DataTable tabelaEmMemoria = new DataTable();
@@ -78,7 +76,8 @@ namespace telaAluno.Repository
                 Aluno aluno = new Aluno();
                 aluno.Id = Convert.ToInt32(tabelaEmMemoria.Rows[i][0].ToString());
                 aluno.Nome = tabelaEmMemoria.Rows[i][1].ToString();
-                aluno.Frequencia= Convert.ToInt16(tabelaEmMemoria.Rows[i][2].ToString());
+                aluno.CodigoMatricula = tabelaEmMemoria.Rows[i][2].ToString();
+                aluno.Frequencia= Convert.ToByte(tabelaEmMemoria.Rows[i][3].ToString());
                 alunos.Add(aluno);
 
 			 
@@ -91,7 +90,7 @@ namespace telaAluno.Repository
                 connection.Open();
                 SqlCommand command = new SqlCommand();
                 command.Connection = connection;
-                command.CommandText = @"SELECT id, nome, codigo_matricula, nota_1, nota_2, nota_3, frequencia WHERE id = @ID";
+                command.CommandText = @"SELECT id, nome, codigo_matricula, nota_1, nota_2, nota_3, frequencia FROM alunosexx WHERE id = @ID";
                 command.Parameters.AddWithValue("@ID", codigo);
 
                 DataTable tabelaEmMemoria = new DataTable();
@@ -105,11 +104,11 @@ namespace telaAluno.Repository
 
                 aluno.Id = Convert.ToInt32(tabelaEmMemoria.Rows[0][0].ToString());
                 aluno.Nome = (tabelaEmMemoria.Rows[0][1].ToString());
-                aluno.CodigoMatricula = (tabelaEmMemoria.Rows[0][3].ToString());
-                aluno.Nota1 = Convert.ToSingle(tabelaEmMemoria.Rows[0][4].ToString());
-                aluno.Nota2 = Convert.ToSingle(tabelaEmMemoria.Rows[0][5].ToString());
-                aluno.Nota3 = Convert.ToSingle(tabelaEmMemoria.Rows[0][6].ToString());
-                aluno.Frequencia = Convert.ToInt16(tabelaEmMemoria.Rows[0][0].ToString());
+                aluno.CodigoMatricula = (tabelaEmMemoria.Rows[0][2].ToString());
+                aluno.Nota1 = Convert.ToSingle(tabelaEmMemoria.Rows[0][3].ToString());
+                aluno.Nota2 = Convert.ToSingle(tabelaEmMemoria.Rows[0][4].ToString());
+                aluno.Nota3 = Convert.ToSingle(tabelaEmMemoria.Rows[0][5].ToString());
+                aluno.Frequencia = Convert.ToByte(tabelaEmMemoria.Rows[0][6].ToString());
                 connection.Close();
                 return aluno;
             }
@@ -130,14 +129,10 @@ namespace telaAluno.Repository
                 connection.Open();
                 SqlCommand command = new SqlCommand();
                 command.Connection = connection;
-                command.CommandText = "SELECT nota_1, nota_2, nota_3 (nota_1 + nota_2 + nota_3)/3 FROM alunosexx";
+                command.CommandText = "SELECT nota_1, nota_2, nota_3, (nota_1 + nota_2 + nota_3)/3 FROM alunosexx";
                 float media = Convert.ToSingle(command.ExecuteScalar());
                 connection.Close();
                 return media;
                }
-
- 
- 
-            
     }
 }

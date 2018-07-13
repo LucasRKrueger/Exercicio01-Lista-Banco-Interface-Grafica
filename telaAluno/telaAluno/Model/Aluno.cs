@@ -14,7 +14,8 @@ namespace telaAluno.Model
         public float Nota1{ get; set; }
         public float Nota2 { get; set; }
         public float Nota3{ get; set; }
-        public short Frequencia  { get; set; }
+        public byte Frequencia  { get; set; }
+        public float Media { get; set; }
 
 
     }
